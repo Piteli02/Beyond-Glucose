@@ -10,43 +10,17 @@ import SwiftUI
 struct firstInteraction: View {
     @EnvironmentObject var router: router
     
-    @State private var finalImageOffset: CGSize = .zero
-    @State private var imageOffset: CGSize = .zero
-    @State private var lanceta = "lancet"
-    
+    @State var handSanitizerPressed = false
     
     var body: some View {
         
-        // MARK: - Image being draggable
         VStack {
-            Spacer()
+        
             HStack {
-                Image(lanceta)
-                    .shadow(radius: 2)
-                    .offset(imageOffset)
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                imageOffset = CGSize(width: finalImageOffset.width + value.translation.width,
-                                                     height: finalImageOffset.height + value.translation.height)
-                            }
-                            .onEnded { value in
-                                finalImageOffset = imageOffset
-                            }
-                    )
-                // Animation for tapping on the object
-                    .onTapGesture {
-                        if lanceta == "lancetpressed"{
-                            lanceta = "lancet"
-                        }else{
-                            lanceta = "lancetpressed"
-                        }
-                        
-                    }
-                
+                customizedImage(imageBeforeClick: "handSanitizer", imageAfterClick: "openHandSanitizer", imageOn: "handSanitizer", pressed: $handSanitizerPressed)
+                    .shadow(color: handSanitizerPressed ? .green : .clear, radius: 130)
             }
-        }
-        //MARK: - Finish draggable image
+        }.background(Image("backgroundImage"))
     }
     
 }
