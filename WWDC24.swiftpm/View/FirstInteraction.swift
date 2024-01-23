@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct firstInteraction: View {
+struct FirstInteraction: View {
     @EnvironmentObject var router: router
     
     @State var handSanitizerPressed = false
@@ -17,7 +17,7 @@ struct firstInteraction: View {
         VStack {
         
             HStack {
-                customizedImage(imageBeforeClick: "handSanitizer", imageAfterClick: "openHandSanitizer", imageOn: "handSanitizer", pressed: $handSanitizerPressed)
+                CustomizedImage(imageBeforeClick: "handSanitizer", imageAfterClick: "openHandSanitizer", imageOn: "handSanitizer", pressed: $handSanitizerPressed)
                     .shadow(color: handSanitizerPressed ? .green : .clear, radius: 130)
             }
         }.background(Image("backgroundImage"))

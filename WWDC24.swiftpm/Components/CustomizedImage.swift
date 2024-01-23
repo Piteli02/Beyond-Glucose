@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct customizedImage: View {
+struct CustomizedImage: View {
     @State var imageBeforeClick: String
     @State var imageAfterClick: String
     @State var imageOn: String

@@ -17,7 +17,7 @@ struct initialScreen: View {
             }.navigationDestination(for: String.self){ value in
                 switch value{
                 case "Interacao":
-                    firstInteraction()
+                    FirstInteraction()
                 default:
                     Text("ERRO") //CORRIGIR CASO DE ALGUM ERRO QUE NÃO VÁ PARA TELA CORRETA
                 }
