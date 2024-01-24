@@ -8,18 +8,28 @@
 import SwiftUI
 
 struct CustomizedImage: View {
-    @State var imageBeforeClick: String
-    @State var imageAfterClick: String
-    @State var imageOn: String
-    @Binding var pressed: Bool
+    @Binding var imageData: ImageInfo
     
+
+    var body: some View {
+        Image(imageData.isPressed ? imageData.nameAfterClick : imageData.nameBeforeClick)
+            .shadow(color: imageData.isPressed ? .red : .clear,  radius: 130)
+        
+            .onTapGesture {
+                imageData.isPressed.toggle()
+            }
+        
+    }
+}
+
+
+
+
+
+
+//MARK: - Making image draggable
 //    @State private var finalImageOffset: CGSize = .zero
 //    @State private var imageOffset: CGSize = .zero
-    
-    var body: some View {
-        Image(imageOn)
-        
-        //Making it draggable
 //            .offset(imageOffset)
 //            .gesture(
 //                DragGesture()
@@ -31,21 +41,3 @@ struct CustomizedImage: View {
 //                        finalImageOffset = imageOffset
 //                    }
 //            )
-        
-            // Animation for tapping on the object
-            .onTapGesture {
-                if imageOn == imageBeforeClick{
-                    imageOn = imageAfterClick
-                }else{
-                    imageOn = imageBeforeClick
-                }
-                
-                if pressed == true{
-                    pressed = false
-                }else{
-                    pressed = true
-                }
-                
-            }
-    }
-}

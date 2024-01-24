@@ -10,17 +10,33 @@ import SwiftUI
 struct FirstInteraction: View {
     @EnvironmentObject var router: router
     
-    @State var handSanitizerPressed = false
+    @State var images: [ImageInfo] = [
+        .init(nameBeforeClick: "handSanitizer", nameAfterClick: "openHandSanitizer"),
+        .init(nameBeforeClick: "cotton", nameAfterClick: "cotton")
+    ]
+   
     
     var body: some View {
-        
         VStack {
         
             HStack {
-                CustomizedImage(imageBeforeClick: "handSanitizer", imageAfterClick: "openHandSanitizer", imageOn: "handSanitizer", pressed: $handSanitizerPressed)
-                    .shadow(color: handSanitizerPressed ? .green : .clear, radius: 130)
+                
+                let handSanitizer = CustomizedImage(imageData: $images[0])
+                let cotton = CustomizedImage(imageData: $images[1])
+                
+                handSanitizer
+                cotton
+                
+                if cotton.imageData.isPressed && handSanitizer.imageData.isPressed{
+                    Text("Animation should happen, objects shouldn't have a shadow anymore. If aren't the right imaages, they dhould not have a shadow anymore")
+                }
+
+                
+                               
             }
+            
         }.background(Image("backgroundImage"))
+        
     }
     
 }
