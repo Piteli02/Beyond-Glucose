@@ -17,7 +17,7 @@ struct CustomizedImage: View {
             .shadow(color: imageData.isPressed ? .red : .clear,  radius: 130)
         
             .onTapGesture {
-                //imageData.isPressed.toggle()
+                imageData.isPressed.toggle()
                 controller.checkPress()
             }
         

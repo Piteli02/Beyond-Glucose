@@ -12,20 +12,25 @@ struct FirstInteraction: View {
     @ObservedObject var controller = FirstInteractionController()
     
     var body: some View {
-        VStack {
-        
-            HStack {
-                
-                let handSanitizer = CustomizedImage(imageData: $controller.images[0], controller: controller)
-                let cotton = CustomizedImage(imageData: $controller.images[1], controller: controller)
-                
-                handSanitizer
-                cotton
-                               
-            }
+        ZStack{
+            // MARK: - Background view
+            Background()
             
-        }.background(Image("backgroundImage"))
-        
+            // MARK: - Building view
+            VStack {
+                
+                HStack {
+                    
+                    let handSanitizer = CustomizedImage(imageData: $controller.images[0], controller: controller)
+                    let cotton = CustomizedImage(imageData: $controller.images[1], controller: controller)
+                    
+                    handSanitizer
+                    cotton
+                    
+                }
+                
+            }
+        }
     }
     
 }

@@ -15,6 +15,7 @@ class FirstInteractionController: ObservableObject{
     ]
     
     func checkPress() -> Void{
-        images[0].isPressed.toggle()
+        //MARK: - Aqui vou checar todas as condições de cliques e disparar as animações ou "descelecões"
     }
 }
+
