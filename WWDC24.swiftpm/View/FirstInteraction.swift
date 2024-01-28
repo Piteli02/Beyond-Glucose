@@ -9,9 +9,20 @@ import SwiftUI
 
 struct FirstInteraction: View {
     @EnvironmentObject var router: router
-    @ObservedObject var controller = FirstInteractionController()
+    @EnvironmentObject var controller: FirstInteractionController
     
     var body: some View {
+        
+        let handSanitizer = CustomizedImage(imageData: $controller.images[0])
+        let cotton = CustomizedImage(imageData: $controller.images[1])
+        let monitor = CustomizedImage(imageData: $controller.images[2])
+        let strip = CustomizedImage(imageData: $controller.images[3])
+        let lancet = CustomizedImage(imageData: $controller.images[4])
+        let hand = CustomizedImage(imageData: $controller.images[5])
+
+
+
+        
         ZStack{
             // MARK: - Background view
             Background()
@@ -21,11 +32,14 @@ struct FirstInteraction: View {
                 
                 HStack {
                     
-                    let handSanitizer = CustomizedImage(imageData: $controller.images[0], controller: controller)
-                    let cotton = CustomizedImage(imageData: $controller.images[1], controller: controller)
-                    
                     handSanitizer
                     cotton
+                    lancet
+                    hand
+                    monitor
+                    strip
+                    
+                   
                     
                 }
                 

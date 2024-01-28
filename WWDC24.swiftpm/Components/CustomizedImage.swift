@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomizedImage: View {
     @Binding var imageData: ImageInfo
-    @ObservedObject var controller: FirstInteractionController
+    @EnvironmentObject var controller: FirstInteractionController
     
 
     var body: some View {
@@ -19,6 +19,7 @@ struct CustomizedImage: View {
             .onTapGesture {
                 imageData.isPressed.toggle()
                 controller.checkPress()
+                
             }
         
     }

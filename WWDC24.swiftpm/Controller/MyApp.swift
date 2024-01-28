@@ -6,6 +6,7 @@ struct MyApp: App {
         WindowGroup {
             FirstInteraction()
                 .environmentObject(router())
+                .environmentObject(FirstInteractionController())
         }
     }
 }

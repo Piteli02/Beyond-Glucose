@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ImageInfo: Identifiable {
     let id = UUID()
-    let nameBeforeClick: String
-    let nameAfterClick: String
+    var nameBeforeClick: String
+    var nameAfterClick: String
     var isPressed: Bool = false
 }
