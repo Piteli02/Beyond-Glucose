@@ -18,8 +18,7 @@ struct CustomizedImage: View {
         
             .onTapGesture {
                 imageData.isPressed.toggle()
-                controller.checkPress()
-                
+                controller.checkPress(image: imageData)
             }
         
     }

@@ -19,9 +19,9 @@ struct FirstInteraction: View {
         let strip = CustomizedImage(imageData: $controller.images[3])
         let lancet = CustomizedImage(imageData: $controller.images[4])
         let hand = CustomizedImage(imageData: $controller.images[5])
-
-
-
+        
+        
+        
         
         ZStack{
             // MARK: - Background view
@@ -39,10 +39,12 @@ struct FirstInteraction: View {
                     monitor
                     strip
                     
-                   
-                    
                 }
                 
+            }
+            
+            if controller.presentErrorView {
+                InteractionErrorView(interactionStage: .stage0)
             }
         }
     }

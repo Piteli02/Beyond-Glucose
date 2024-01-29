@@ -18,12 +18,14 @@ class FirstInteractionController: ObservableObject{
         .init(nameBeforeClick: "closedLancet", nameAfterClick: "openLancet"),
         .init(nameBeforeClick: "hand", nameAfterClick: "hand"),
     ]
-    
+        
     @Published var interactionStage = 0
     @Published var pressedImages = 0
+    @Published var presentErrorView = false
     
-    func checkPress() -> Void{
+    func checkPress(image: ImageInfo) -> Void{
         
+        checkcountPressed(image: image)
         countPressed()
         
         if pressedImages >= 2{
@@ -35,6 +37,23 @@ class FirstInteractionController: ObservableObject{
                 
             } else if interactionStage == 2{
                 validatePress(image1: 5, image2: 4, imageToChange: "bloodHand")
+                
+            }else if interactionStage == 3{
+                if images[5].isPressed == true && images[2].isPressed == true{
+                    
+                    images[2].nameAfterClick = "monitorWithNumber"
+                    images[2].nameBeforeClick = "monitorWithNumber"
+                    
+                    resetPressed()
+                    interactionStage = interactionStage + 1
+                    
+                }else {
+                    // MANDAR MENSAGEM PADRÃO DO ERRO DE ACORDO COM O ESTÁGIO E LIMPAR SELEÇÃO
+                    print("Mandar mensagem de erro")
+                    resetPressed()
+                }
+            }else if interactionStage == 4{
+                validatePress(image1: 5, image2: 1, imageToChange: "cleanHand")
             }
         }
         
@@ -73,10 +92,19 @@ class FirstInteractionController: ObservableObject{
             interactionStage = interactionStage + 1
             
         }else {
-            // MANDAR MENSAGEM PADRÃO DO PRIMEIRO ESTÁGIO CASO ERROU E LIMPAR SELEÇÃO
+            // MANDAR MENSAGEM PADRÃO DO ERRO DE ACORDO COM O ESTÁGIO E LIMPAR SELEÇÃO
             print("Mandar mensagem de erro")
+            presentErrorView = true
             resetPressed()
         }
     }
+    
+    func checkcountPressed(image: ImageInfo) -> Void{
+        if image.isPressed == false{
+            pressedImages = pressedImages - 1
+        }
+        
+    }
+    
 }
 
