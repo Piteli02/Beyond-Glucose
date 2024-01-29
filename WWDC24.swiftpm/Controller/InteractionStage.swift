@@ -15,6 +15,7 @@ enum InteractionStage: Int{
     case stage3 = 3
     case stage4 = 4
     case stage5 = 5
+    case stage6 = 6
     
     var text: String {
         switch self {
@@ -30,6 +31,8 @@ enum InteractionStage: Int{
           return "estagio 4"
         case .stage5:
           return "estagio 5"
+        case .stage6:
+            return "Stage 6"
         }
       }
     

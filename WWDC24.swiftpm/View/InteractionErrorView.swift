@@ -9,7 +9,6 @@ import SwiftUI
 
 struct InteractionErrorView: View {
     @EnvironmentObject var controller: FirstInteractionController
-    @State var interactionStage: InteractionStage
     
     var body: some View {
         ZStack{
@@ -20,7 +19,7 @@ struct InteractionErrorView: View {
             
             VStack{
                 
-                Text(interactionStage.text)
+                Text(controller.interactionStage.text)
                     .font(.title)
                     .foregroundColor(.black)
                     .padding()

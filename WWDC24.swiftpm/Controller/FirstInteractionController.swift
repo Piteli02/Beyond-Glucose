@@ -19,7 +19,7 @@ class FirstInteractionController: ObservableObject{
         .init(nameBeforeClick: "hand", nameAfterClick: "hand"),
     ]
         
-    @Published var interactionStage = 0
+    @Published var interactionStage: InteractionStage = .stage0
     @Published var pressedImages = 0
     @Published var presentErrorView = false
     
@@ -29,30 +29,30 @@ class FirstInteractionController: ObservableObject{
         countPressed()
         
         if pressedImages >= 2{
-            if interactionStage == 0{
+            if interactionStage == .stage0{
                 validatePress(image1: 5, image2: 0, imageToChange: "cleanHand")
                 
-            } else if interactionStage == 1{
+            } else if interactionStage == .stage1{
                 validatePress(image1: 2, image2: 3, imageToChange: "monitorStrip")
                 
-            } else if interactionStage == 2{
+            } else if interactionStage == .stage2{
                 validatePress(image1: 5, image2: 4, imageToChange: "bloodHand")
                 
-            }else if interactionStage == 3{
+            }else if interactionStage == .stage3{
                 if images[5].isPressed == true && images[2].isPressed == true{
                     
                     images[2].nameAfterClick = "monitorWithNumber"
                     images[2].nameBeforeClick = "monitorWithNumber"
                     
                     resetPressed()
-                    interactionStage = interactionStage + 1
-                    
+                    interactionStage = InteractionStage(rawValue: interactionStage.rawValue + 1) ?? .stage6
                 }else {
                     // MANDAR MENSAGEM PADRÃO DO ERRO DE ACORDO COM O ESTÁGIO E LIMPAR SELEÇÃO
                     print("Mandar mensagem de erro")
+                    presentErrorView = true
                     resetPressed()
                 }
-            }else if interactionStage == 4{
+            }else if interactionStage == .stage4{
                 validatePress(image1: 5, image2: 1, imageToChange: "cleanHand")
             }
         }
@@ -89,7 +89,10 @@ class FirstInteractionController: ObservableObject{
             images[image1].nameBeforeClick = imageToChange
             
             resetPressed()
-            interactionStage = interactionStage + 1
+            interactionStage = InteractionStage(rawValue: interactionStage.rawValue + 1) ?? .stage6
+            if interactionStage == .stage3 {
+                print("a")
+            }
             
         }else {
             // MANDAR MENSAGEM PADRÃO DO ERRO DE ACORDO COM O ESTÁGIO E LIMPAR SELEÇÃO

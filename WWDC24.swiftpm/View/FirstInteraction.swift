@@ -44,7 +44,7 @@ struct FirstInteraction: View {
             }
             
             if controller.presentErrorView {
-                InteractionErrorView(interactionStage: .stage0)
+                InteractionErrorView()
             }
         }
     }
