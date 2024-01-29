@@ -20,9 +20,6 @@ struct FirstInteraction: View {
         let lancet = CustomizedImage(imageData: $controller.images[4])
         let hand = CustomizedImage(imageData: $controller.images[5])
         
-        
-        
-        
         ZStack{
             // MARK: - Background view
             Background()
@@ -41,10 +38,12 @@ struct FirstInteraction: View {
                     
                 }
                 
-            }
+            }.allowsHitTesting(!controller.presentErrorView)
             
             if controller.presentErrorView {
                 InteractionErrorView()
+                    
+
             }
         }
     }

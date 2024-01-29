@@ -15,24 +15,21 @@ enum InteractionStage: Int{
     case stage3 = 3
     case stage4 = 4
     case stage5 = 5
-    case stage6 = 6
     
     var text: String {
         switch self {
         case .stage0:
-          return "First of all, we need to be with our hands clean! Make sure they are clean before doing something else"
+          return "First of all, we need clean hands! Make sure they are clean before doing something else"
         case .stage1:
-          return "estagio 1"
+          return "Before doing anything else, the strip may be on the glucose reader, right?"
         case .stage2:
-          return "estagio 2"
+          return "The finger is ready to be poked!"
         case .stage3:
-          return "estagio 3"
+          return "Before cleaning the finger, we need to put the blood drop on the reader."
         case .stage4:
-          return "estagio 4"
+          return "Now, we just ned to clean the blood drop!"
         case .stage5:
-          return "estagio 5"
-        case .stage6:
-            return "Stage 6"
+          return "Congratulations! Now, we learned how to measure glucose levels of the blood!"
         }
       }
     

@@ -15,6 +15,7 @@ struct CustomizedImage: View {
     var body: some View {
         Image(imageData.isPressed ? imageData.nameAfterClick : imageData.nameBeforeClick)
             .shadow(color: imageData.isPressed ? .red : .clear,  radius: 130)
+            
         
             .onTapGesture {
                 imageData.isPressed.toggle()

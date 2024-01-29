@@ -12,10 +12,6 @@ struct InteractionErrorView: View {
     
     var body: some View {
         ZStack{
-            Rectangle()
-                .foregroundColor(.yellow)
-                .frame(width: 100, height: 100)
-                .cornerRadius(10)
             
             VStack{
                 
@@ -23,13 +19,19 @@ struct InteractionErrorView: View {
                     .font(.title)
                     .foregroundColor(.black)
                     .padding()
-                
+                    .background(
+                        Rectangle()
+                        .foregroundColor(.yellow)
+                        .cornerRadius(10)
+                    )
+       
                 Button(action: {
                     controller.presentErrorView.toggle()
                 }) {
                     Text("OK")
                         .foregroundColor(.red)
                         .fontWeight(.bold)
+                        
                 }
             }
         }
