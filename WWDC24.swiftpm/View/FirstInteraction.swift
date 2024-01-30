@@ -10,6 +10,7 @@ import SwiftUI
 struct FirstInteraction: View {
     @EnvironmentObject var router: router
     @EnvironmentObject var controller: FirstInteractionController
+    @State var presentClue = false
     
     var body: some View {
         
@@ -27,6 +28,12 @@ struct FirstInteraction: View {
             // MARK: - Building view
             VStack {
                 
+                Button(action: {
+                    presentClue.toggle()
+                }) {
+                    Text("CLUES")
+                }
+                
                 HStack {
                     
                     handSanitizer
@@ -42,8 +49,10 @@ struct FirstInteraction: View {
             
             if controller.presentErrorView {
                 InteractionErrorView()
-                    
-
+            }
+            
+            if presentClue{
+                CluesFirstInteraction(presentClues: $presentClue)
             }
         }
     }
