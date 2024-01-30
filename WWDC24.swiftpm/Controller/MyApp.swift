@@ -4,9 +4,12 @@ import SwiftUI
 struct MyApp: App {
     var body: some Scene {
         WindowGroup {
-            FirstInteraction()
+//            FirstInteraction()
+//                    .environmentObject(router())
+//                    .environmentObject(FirstInteractionController())
+            SecondInteraction()
                 .environmentObject(router())
-                .environmentObject(FirstInteractionController())
+                .environmentObject(SecondInteractionController())
         }
     }
 }

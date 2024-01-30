@@ -54,6 +54,7 @@ struct FirstInteraction: View {
             if presentClue{
                 CluesFirstInteraction(presentClues: $presentClue)
             }
+            
         }
     }
     

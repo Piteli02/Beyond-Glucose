@@ -21,7 +21,7 @@ enum InteractionStage: Int{
         case .stage0:
           return "First of all, we need clean hands! Make sure they are clean before doing something else"
         case .stage1:
-          return "Before doing anything else, the strip may be on the glucose reader, right?"
+          return "Before doing anything else, the strip may be on the glucose reader."
         case .stage2:
           return "The finger is ready to be poked!"
         case .stage3:
