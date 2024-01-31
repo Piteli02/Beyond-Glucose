@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FirstInteraction: View {
-    @EnvironmentObject var router: router
     @EnvironmentObject var controller: FirstInteractionController
     @State var presentClue = false
     
@@ -27,11 +26,22 @@ struct FirstInteraction: View {
             
             // MARK: - Building view
             VStack {
+                HStack{
+                    Text("   Let's meause the glucose levels of the blood?")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Spacer()
+                }.padding(.leading, 40)
                 
-                Button(action: {
-                    presentClue.toggle()
-                }) {
-                    Text("CLUES")
+                HStack{
+                    Spacer()
+                    
+                    Button(action: {
+                        presentClue.toggle()
+                    }) {
+                        Text("CLUES")
+                    }.padding(.trailing, 50)
+                    
                 }
                 
                 HStack {
@@ -43,6 +53,25 @@ struct FirstInteraction: View {
                     monitor
                     strip
                     
+                }
+                Spacer()
+                if controller.continueDisabled {
+                    
+                    Button(action: {
+                        print("Acabe a experiencia primeiro") // Arrumar isso
+                           }) {
+                               Image("continueButtonDisabled")
+
+                           }
+                           .padding(.bottom, 50)
+                       
+                }else{
+                    NavigationLink(value: "SecondInteraction"){
+                        
+                        Image("continueButton")
+                        
+                    }.padding(.bottom, 50)
+                        .disabled(controller.continueDisabled)
                 }
                 
             }.allowsHitTesting(!controller.presentErrorView)

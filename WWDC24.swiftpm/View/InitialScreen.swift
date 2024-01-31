@@ -23,6 +23,16 @@ struct initialScreen: View {
                     WhatIsDiabetes()
                 case "News":
                     News()
+                case "DiabetesEssential":
+                    DiabetesEssential()
+                case "FirstInteraction":
+                    FirstInteraction()
+                        .environmentObject(FirstInteractionController())
+                case "SecondInteraction":
+                    SecondInteraction()
+                        .environmentObject(SecondInteractionController())
+                case "Hipoglicemia":
+                    Hipoglicemia(router: router)
                 default:
                     Text("ERRO") //CORRIGIR CASO DE ALGUM ERRO QUE NÃO VÁ PARA TELA CORRETA
                 }

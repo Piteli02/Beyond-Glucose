@@ -22,6 +22,7 @@ class FirstInteractionController: ObservableObject{
     @Published var interactionStage: InteractionStage = .stage0
     @Published var pressedImages = 0
     @Published var presentErrorView = false
+    @Published var continueDisabled = true
     
     func checkPress(image: ImageInfo) -> Void{
         
@@ -59,7 +60,9 @@ class FirstInteractionController: ObservableObject{
                 validatePress(image1: 5, image2: 1, imageToChange: "cleanHand")
             }
         }
-        
+        if interactionStage == .stage5{
+            continueDisabled = false
+        }
     }
     
     func countPressed() -> Void{

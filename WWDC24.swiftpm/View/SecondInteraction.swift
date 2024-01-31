@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SecondInteraction: View {
-    @EnvironmentObject var router: router
     @EnvironmentObject var controller: SecondInteractionController
     @State var presentClue = false
     
@@ -23,14 +22,26 @@ struct SecondInteraction: View {
             Background()
             
             VStack{
-                Button(action: {
-                    presentClue.toggle()
-                }) {
-                    Text("CLUES")
+                
+                HStack{
+                    Text("   Let's apply insulin?")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Spacer()
+                }.padding(.leading, 40)
+                
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        presentClue.toggle()
+                    }) {
+                        Text("CLUES")
+                    }
+                    .padding(.trailing, 50)
                 }
                 
                 HStack{
-                    VStack{ 
+                    VStack{
                         handSanitizer
                         cotton
                     }.padding()
@@ -41,12 +52,33 @@ struct SecondInteraction: View {
                     
                     VStack{
                         seringe
-                            
+                        
                         insulin
                     }.padding()
-    
+                    
+                }
+                Spacer()
+                
+                if controller.continueDisabled {
+                    
+                    Button(action: {
+                        print("Acabe a experiencia primeiro") // Arrumar isso
+                    }) {
+                        Image("continueButtonDisabled")
+                        
+                    }
+                    .padding(.bottom, 50)
+                    
+                }else{
+                    NavigationLink(value: "Hipoglicemia"){
+                        
+                        Image("continueButton")
+                        
+                    }.padding(.bottom, 50)
+                        .disabled(controller.continueDisabled)
                 }
             }.allowsHitTesting(!controller.presentErrorView)
+            
             
             if controller.presentErrorView {
                 InteractionErrorView2()
@@ -57,5 +89,5 @@ struct SecondInteraction: View {
         }
         
     }
+    
 }
-

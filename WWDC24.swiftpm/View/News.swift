@@ -51,7 +51,7 @@ struct News: View {
                 
                 Spacer()
                 
-                NavigationLink(value: "News"){
+                NavigationLink(value: "DiabetesEssential"){
                     
                     Image("continueButton")
                     
