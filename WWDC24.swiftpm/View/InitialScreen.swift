@@ -5,23 +5,29 @@ struct initialScreen: View {
     
     var body: some View {
         NavigationStack(path: $router.path){
-            
-            NavigationLink(value: "Interacao"){
+            ZStack{
+                Background()
+            NavigationLink(value: "Start"){
                 
-                    Text("Ir para interação")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.red)
-                        .cornerRadius(20)
+                Text("Start")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.red)
+                    .cornerRadius(20)
                 
             }.navigationDestination(for: String.self){ value in
                 switch value{
-                case "Interacao":
-                    FirstInteraction()
+                case "Start":
+                    FirstStorytellingView()
+                case "WhatIsDiabetes":
+                    WhatIsDiabetes()
+                case "News":
+                    News()
                 default:
                     Text("ERRO") //CORRIGIR CASO DE ALGUM ERRO QUE NÃO VÁ PARA TELA CORRETA
                 }
             }
+        }
         }
         
     }

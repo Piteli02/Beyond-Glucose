@@ -41,7 +41,7 @@ struct Background: View {
                                 .frame(width: geometry.size.width, height: 1.5)
                                 .foregroundColor(.blue)
                                 .opacity(0.35)
-                                .padding(.top, 35)
+                                .padding(.top, 60)
                         }
                     }
                 }.layoutPriority(2)
