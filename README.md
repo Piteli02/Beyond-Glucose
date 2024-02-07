@@ -7,6 +7,8 @@
 - https://www.who.int/news-room/fact-sheets/detail/diabetes
 - https://www.paho.org/en/news/11-11-2022-number-people-diabetes-americas-has-more-tripled-three-decades-paho-report-says
 - https://www.who.int/data/gho/indicator-metadata-registry/imr-details/2380
+### International Diabetes Federation
+- https://idf.org/about-diabetes/diabetes-facts-figures/
 ### American Diabetes Association
 - https://diabetes.org/health-wellness/medication/insulin-routines#:~:text=Insulin%20shots%20are%20most%20effective,30%20minutes%20before%20you%20eat.
 ### Brazilian Govern
