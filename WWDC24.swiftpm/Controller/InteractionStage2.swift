@@ -19,15 +19,15 @@ enum InteractionStage2: Int{
     var text: String {
         switch self {
         case .stage0:
-          return "First of all, arms, hands and insulin have to be higienized. Let's put some sanitizer on the cotton and use it later."
+          return "First of all, arms, hands and insulin bottle have to be sanitized. Let's put some sanitizer on the cotton and use it later."
         case .stage1:
           return "Now lets higienize the arm!"
         case .stage2:
           return "What about higienizing the insulin bottle"
         case .stage3:
-          return "The seringe is without insulin"
+          return "The seringe is empty!"
         case .stage4:
-            return "Glucose levels have to be controlled, apply insulin on the arm!"
+            return "In order to control glucose levels, apply insulin on the arm!"
         case .stage5:
             return "Congratulations! Now, we learned how to measure glucose levels of the blood!"
          
