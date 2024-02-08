@@ -8,20 +8,20 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "WWDC24",
+    name: "Beyond glucose",
     platforms: [
         .iOS("16.0")
     ],
     products: [
         .iOSApplication(
-            name: "WWDC24",
+            name: "Beyond glucose",
             targets: ["AppModule"],
             bundleIdentifier: "caiopiteli.WWDC24",
             teamIdentifier: "Q92SD7R6D3",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .asset("AppIcon"),
-            accentColor: .presetColor(.brown),
+            accentColor: .presetColor(.blue),
             supportedDeviceFamilies: [
                 .pad,
                 .phone
@@ -38,7 +38,10 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            path: ".",
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

@@ -6,6 +6,7 @@ struct MyApp: App {
         WindowGroup {
             initialScreen()
                 .environmentObject(router())
+                .environmentObject(customFonts())
         }
     }
 }

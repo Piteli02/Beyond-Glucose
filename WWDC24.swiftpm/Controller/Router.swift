@@ -22,6 +22,9 @@ class router: ObservableObject {
     
     func navigateTo(_ appRoute: String) {
             path.append(appRoute)
+        
         }
+    
+    
 }
 
