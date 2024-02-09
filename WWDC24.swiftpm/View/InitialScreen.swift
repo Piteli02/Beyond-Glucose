@@ -10,21 +10,26 @@ struct initialScreen: View {
         NavigationStack(path: $router.path){
             
             ZStack{
+                //MARK: - Background
                 Color("coverBackgroundColor")
+                    .ignoresSafeArea()
                 
                 Image("coverPattern")
                     .resizable()
                     .scaledToFill()
                     .opacity(0.8)
                     .blendMode(.multiply)
+                    .ignoresSafeArea()
                 
+
                 GeometryReader{ geometry in
                     
                     let width = geometry.size.width
                     let height = geometry.size.height
                     
                     HStack{
-                        //Cover black margin
+                        
+                        //Black Margin
                         Rectangle()
                             .frame(width: width/7.2, height: height)
                             .foregroundColor(Color("marginColor"))
@@ -33,10 +38,12 @@ struct initialScreen: View {
                                     .resizable()
                                     .opacity(1)
                                     .blendMode(.multiply)
+                                    .ignoresSafeArea()
                             )
                         
                         Spacer()
                         
+                        //MARK: - Buttons and title
                         VStack{
                             ZStack{
                                 Image("coverTitleRectangle")
@@ -54,7 +61,7 @@ struct initialScreen: View {
                                 ZStack{
                                     Image("coverButton")
                                         .resizable()
-                                        .frame(width: width/3.2, height: height/12)
+                                        .frame(width: width/3.2, height: height/13)
                                         
                                     Text("Start")
                                         .font(Font.custom("JustMeAgainDownHere", size: 60))
@@ -68,7 +75,7 @@ struct initialScreen: View {
                                 ZStack{
                                     Image("coverButton")
                                         .resizable()
-                                        .frame(width: width/3.2, height: height/12)
+                                        .frame(width: width/3.2, height: height/13)
                                         
                                     Text("Credits")
                                         .font(Font.custom("JustMeAgainDownHere", size: 60))
@@ -83,7 +90,6 @@ struct initialScreen: View {
                     
                 }
             }
-            .ignoresSafeArea()
             .navigationDestination(for: String.self){ value in
                 switch value{
                 case "Start":
