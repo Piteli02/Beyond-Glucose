@@ -10,6 +10,7 @@ import SwiftUI
 struct FirstInteraction: View {
     @EnvironmentObject var controller: FirstInteractionController
     @State var presentClue = false
+  
     
     var body: some View {
         
@@ -27,7 +28,7 @@ struct FirstInteraction: View {
             // MARK: - Building view
             VStack {
                 HStack{
-                    Text("   Let's meause the glucose levels of the blood?")
+                    Text("    Let's help on measuring glucose levels?")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
@@ -55,33 +56,27 @@ struct FirstInteraction: View {
                     
                 }
                 Spacer()
-                if controller.continueDisabled {
-                    
-                    Button(action: {
-                        print("Acabe a experiencia primeiro") // Arrumar isso
-                           }) {
-                               Image("continueButtonDisabled")
-
-                           }
-                           .padding(.bottom, 50)
-                       
-                }else{
-                    NavigationLink(value: "SecondInteraction"){
-                        
-                        Image("continueButton")
-                        
-                    }.padding(.bottom, 50)
-                        .disabled(controller.continueDisabled)
-                }
                 
-            }.allowsHitTesting(!controller.presentErrorView)
-            
+                Text("Step: \(controller.interactionStage.rawValue)/5")
+                    .font(Font.custom("JustMeAgainDownHere", size: 56, relativeTo: .largeTitle))
+                    .padding(.bottom, 40)
+                
+            }
+            .allowsHitTesting(!controller.presentErrorView)
+            .allowsHitTesting(!presentClue)
+            .allowsHitTesting(!controller.continueToNextScreen)
+        
             if controller.presentErrorView {
                 InteractionErrorView()
             }
             
             if presentClue{
                 CluesFirstInteraction(presentClues: $presentClue)
+            }
+            
+            if controller.interactionStage == .stage5 {
+                ContinueInteractionScreen(title: "Wow! Thanks a lot!", textBody: "Glucose levels:\n    Hypoglycemia - Below 70\n    Ideal - 70 to 100\n    Prediabetes - 100 to 125\n    Diabetes - 126 or higher\n\nLooks like the glucose levels are high, let's learn how the insulin application is made?", nextScreen: "SecondInteraction")
+                
             }
             
         }

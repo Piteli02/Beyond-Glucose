@@ -16,7 +16,7 @@ struct SecondInteraction: View {
         let cotton = CustomizedImage2(imageData: $controller.images[1])
         let arm = CustomizedImage2(imageData: $controller.images[2])
         let seringe = CustomizedImage2(imageData: $controller.images[3])
-        let insulin = CustomizedImage2(imageData: $controller.images[4])
+        let insulin = CustomizedImage2(imageData: $controller.images[4]) 
         
         ZStack{
             Background()
@@ -57,27 +57,14 @@ struct SecondInteraction: View {
                     }.padding()
                     
                 }
-                Spacer()
                 
-                if controller.continueDisabled {
-                    
-                    Button(action: {
-                        print("Acabe a experiencia primeiro") // Arrumar isso
-                    }) {
-                        Image("continueButtonDisabled")
-                        
-                    }
-                    .padding(.bottom, 50)
-                    
-                }else{
-                    NavigationLink(value: "Hipoglicemia"){
-                        
-                        Image("continueButton")
-                        
-                    }.padding(.bottom, 50)
-                        .disabled(controller.continueDisabled)
-                }
+                Text("Step: \(controller.interactionStage.rawValue)/5")
+                    .font(Font.custom("JustMeAgainDownHere", size: 56, relativeTo: .largeTitle))
+                    .padding(.bottom, 40)
+                
             }.allowsHitTesting(!controller.presentErrorView)
+                .allowsHitTesting(!presentClue)
+                .allowsHitTesting(!controller.continueToNextScreen)
             
             
             if controller.presentErrorView {
@@ -85,6 +72,10 @@ struct SecondInteraction: View {
             }
             if presentClue{
                 CluesFirstInteraction(presentClues: $presentClue)
+            }
+            if controller.interactionStage == .stage5 {
+                ContinueInteractionScreen(title: "Thank you for the help!", textBody: "You had just helped on controlling the glucose levels of the blood\n\nNow let's undestant what is Hypoglycemia crisis and the importance of education on combating prejudice?", nextScreen: "Hypoglycemia")
+                
             }
         }
         

@@ -1,42 +1,51 @@
 //
-//  InteractionErrorView.swift
-//  WWDC24
+//  ContinueInteractionScreen.swift
 //
-//  Created by Caio Gomes Piteli on 29/01/24.
+//
+//  Created by Caio Gomes Piteli on 13/02/24.
 //
 
 import SwiftUI
 
-struct InteractionErrorView: View {
+struct ContinueInteractionScreen: View {
     @EnvironmentObject var controller: FirstInteractionController
+    @State var title: String
+    @State var textBody: String
+    @State var nextScreen: String
     
     var body: some View {
         ZStack{
             Color.black.opacity(0.3).ignoresSafeArea()
-
+            
             
             VStack(alignment: .leading){
                 
-                Text("Oops...")
+                Text(title)
                     .font(Font.custom("JustMeAgainDownHere", size: 56, relativeTo: .largeTitle))
                     .foregroundStyle(.black)
                     .padding(.leading, 40)
                     .padding(.top, 20)
                 
-                Text(controller.interactionStage.text)
+                Text(textBody)
                     .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
                     .foregroundStyle(.black)
                     .padding(.horizontal, 40)
                     .padding(.bottom, 20)
                 
+                
+                
                 HStack {
+                    
                     Spacer()
-                    Button(action: {
-                        controller.presentErrorView.toggle()
-                    }) {
-                        Image("okButton")
-                            .padding(.bottom, 20)
-                    }
+                    
+                    NavigationLink(value: nextScreen){
+                        
+                        ZStack{
+                            Image("let'sButton")
+                        }
+                        
+                    }.padding(.bottom, 20)
+                    
                     Spacer()
                 }
                 
@@ -52,9 +61,9 @@ struct InteractionErrorView: View {
                             .ignoresSafeArea()
                     )
                 
-            ).frame(maxWidth: UIScreen.main.bounds.width - 200)
+            )
+            .frame(maxWidth: UIScreen.main.bounds.width - 200)
+            
         }
     }
 }
-
-

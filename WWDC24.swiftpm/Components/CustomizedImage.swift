@@ -11,11 +11,12 @@ struct CustomizedImage: View {
     @Binding var imageData: ImageInfo
     @EnvironmentObject var controller: FirstInteractionController
     
-
+    
     var body: some View {
         Image(imageData.isPressed ? imageData.nameAfterClick : imageData.nameBeforeClick)
-            .shadow(color: imageData.isPressed ? .red : .clear,  radius: 130)
-            
+            .shadow(color: imageData.isPressed ? Color("highlightColor"): .clear, radius: 0, x: 6, y: 6)
+
+
         
             .onTapGesture {
                 imageData.isPressed.toggle()

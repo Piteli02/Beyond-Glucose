@@ -29,7 +29,7 @@ class SecondInteractionController: ObservableObject{
     @Published var interactionStage: InteractionStage2 = .stage0
     @Published var pressedImages = 0
     @Published var presentErrorView = false
-    @Published var continueDisabled = true
+    @Published var continueToNextScreen = false
     
     func checkPress(image: ImageInfo) -> Void{
         
@@ -79,7 +79,7 @@ class SecondInteractionController: ObservableObject{
             }
             
             if interactionStage == .stage5 {
-                continueDisabled = false
+                continueToNextScreen = true
             }
             
         }
