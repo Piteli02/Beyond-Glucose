@@ -31,7 +31,7 @@ struct initialScreen: View {
                         
                         //Black Margin
                         Rectangle()
-                            .frame(width: width/7.2, height: height)
+                            .frame(width: width/8, height: height)
                             .foregroundColor(Color("marginColor"))
                             .overlay(
                                 Image("paperTexture")
@@ -94,6 +94,8 @@ struct initialScreen: View {
                 switch value{
                 case "Start":
                     FirstStorytellingView()
+                case "Credits":
+                        Credits()
                 case "WhatIsDiabetes":
                     WhatIsDiabetes()
                 case "News":
@@ -106,8 +108,12 @@ struct initialScreen: View {
                 case "SecondInteraction":
                     SecondInteraction()
                         .environmentObject(SecondInteractionController())
-                case "Hipoglicemia":
-                    Hipoglicemia(router: router)
+                case "Hypoglycemia":
+                    Hypoglycemia()
+                case "Disclaimer":
+                    Disclaimer()
+                case "FinalScreen":
+                    FinalScreen()
                 default:
                     Text("ERRO") //CORRIGIR CASO DE ALGUM ERRO QUE NÃO VÁ PARA TELA CORRETA
                 }

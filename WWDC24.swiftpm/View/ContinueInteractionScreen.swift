@@ -51,7 +51,7 @@ struct ContinueInteractionScreen: View {
                 
             }.background(
                 Rectangle()
-                    .foregroundColor(Color("InteractionErrorColor"))
+                    .foregroundColor(Color("popUpColor"))
                     .cornerRadius(20)
                     .overlay(
                         Image("paperTexture")

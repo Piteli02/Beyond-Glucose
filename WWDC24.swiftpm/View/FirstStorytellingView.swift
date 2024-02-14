@@ -14,49 +14,76 @@ struct FirstStorytellingView: View {
 
     
     var body: some View {
-
         
+        GeometryReader{ geometry in
         ZStack{
             Background()
             
             VStack{
                 HStack{
+                    
                     Spacer()
+                    
                     Text("Caio Piteli")
-                        .font(.largeTitle)
-                        .fontWeight(.medium)
+                        .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                        .foregroundColor(.black)
+                    
                     Spacer()
+                    
                     Text("\(dateControl.formattedDate())")
-                        .font(.largeTitle)
-                        .fontWeight(.medium)
+                        .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                        .foregroundColor(.black)
+                    
                     Spacer()
                     
                 }
                 HStack{
+                    
                     Spacer()
+                    
                     Text("Bebedouro - São Paulo - 6th Grade")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                    Spacer()
-                }
-                HStack{
-                    Text("    Class summary:")
-                        .font(.title)
-                        .fontWeight(.semibold)
+                        .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                        .foregroundColor(.black)
+                        .offset(y: 10)
+                    
                     Spacer()
                     
                 }
-                .padding(.top, 28)
-                .padding(.leading, 40)
-                .padding(.bottom, 28)
+                HStack{
+                    
+                    Text("    Class summary:")
+                        .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                        .foregroundColor(.black)
+                        .offset(y: -10)
+                    
+                    Spacer()
+                    
+                }
+                
                 HStack{
                     Text("     Understand about diabetes, symptoms, care and importance of support. Essential notes for understanding and supporting classmates with diabetes. A moment of learning and empathy in the classroom.")
-                        .font(.title2)
-                        .fontWeight(.regular)
-                        .lineSpacing(42)
+                        .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
+                        .foregroundColor(.black)
+                        .offset(y: -12)
+                        .baselineOffset(12)
+                    
+                    
                     Spacer()
-                }.padding(.leading, 40)
+                    
+                }.padding(.leading, 35)
                 
+                ZStack{
+                    Image("dataIllustration")
+                        .resizable()
+                        .frame(width: geometry.size.width - 200, height: geometry.size.height/3)
+                    
+                    Text("In 2021 there were 537 million people living with Diabetes. Almost the population of USA and Brazil combined.")
+                        .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
+                        .baselineOffset(12)
+                        .frame(width: geometry.size.width/3)
+                        .padding(.leading, geometry.size.width/2.4)
+
+                }
                 Spacer()
                 
                 NavigationLink(value: "WhatIsDiabetes"){
@@ -64,7 +91,9 @@ struct FirstStorytellingView: View {
                     Image("continueButton")
                     
                 }.padding(.bottom, 50)
-            }        }
+            }        
+        }
+    }
     }
 }
 

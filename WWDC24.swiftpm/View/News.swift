@@ -9,49 +9,59 @@ import SwiftUI
 
 struct News: View {
     var body: some View {
+        GeometryReader{ geometry in
         ZStack{
             Background()
             
             VStack{
                 
                 HStack{
-                    Text("   Empathy and Diabetes")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                    Text("    Empathy and Diabetes")
+                        .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                    
                     Spacer()
-                }.padding(.leading, 40)
+                    
+                }
                 
                 HStack{
-                    Text("     Unfortunately, until today, there are absurd cases of prejudice against diabetics and we need to understand that the disease is not just about food restriction, but about educating others to generate more inclusion and respect...")
-                        .font(.title2)
-                        .fontWeight(.regular)
-                        .lineSpacing(42)
+                    Text("     Unfortunately, all around the world there are absurd cases of prejudice against diabetics, so it's necessary to  educate, in order to generate more inclusion and respect...")
+                        .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
+                        .foregroundColor(.black)
+                        .baselineOffset(12)
                     Spacer()
-                }.padding(.leading, 40)
+                } .padding(.leading, 35)
                 
                 HStack{
                     Spacer()
+                    
                     Image("news1")
-                        .frame(maxWidth: .infinity)
-                                        .frame(maxHeight: .infinity)
+                        .frame(width: geometry.size.width / 3.1, height: geometry.size.height / 3)
+                        .padding()
+                        
+                    
                     Spacer()
+                    
                     Image("news2")
-                        .frame(maxWidth: .infinity)
-                                        .frame(maxHeight: .infinity)
+                        .frame(width: geometry.size.width / 2.8, height: geometry.size.height / 4.2)
+                        .padding()
+                
+                    
                     Spacer()
                 }
                 
                 HStack{
                     Spacer()
+                    
                     Image("news3")
-                        .frame(maxWidth: .infinity)
-                        .frame(maxHeight: .infinity)
+                        .frame(width: geometry.size.width / 2.7, height: geometry.size.height / 4.5)
+                        .padding()
+                     
                     Spacer()
                 }
                 
                 Spacer()
                 
-                NavigationLink(value: "DiabetesEssential"){
+                NavigationLink(value: "Disclaimer"){
                     
                     Image("continueButton")
                     
@@ -59,8 +69,6 @@ struct News: View {
             }
         }
     }
+    }
 }
 
-#Preview {
-    News()
-}
