@@ -23,6 +23,7 @@ class FirstInteractionController: ObservableObject{
     @Published var pressedImages = 0
     @Published var presentErrorView = false
     @Published var continueToNextScreen = false
+    @Published var activateSuccessSound = false
     
     func checkPress(image: ImageInfo) -> Void{
         
@@ -89,12 +90,13 @@ class FirstInteractionController: ObservableObject{
         if images[image1].isPressed == true && images[image2].isPressed == true{
             
             images[image2].nameAfterClick = ""
-            images[image2].nameBeforeClick = "" //arrumar um jeito de deixar isso melhor, para o xcode não reclamar que não achou o asset
+            images[image2].nameBeforeClick = "" //find a better way to do this, so than Xcode won't complain the asset is missing
             
             images[image1].nameAfterClick = imageToChange
             images[image1].nameBeforeClick = imageToChange
             
             resetPressed()
+            activateSuccessSound = true
             interactionStage = InteractionStage(rawValue: interactionStage.rawValue + 1) ?? .stage5
             
         }else {

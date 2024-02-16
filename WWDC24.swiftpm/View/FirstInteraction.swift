@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct FirstInteraction: View {
     @EnvironmentObject var controller: FirstInteractionController
     @State var presentClue = false
+    
+    @State var audioPlayerSuccess: AVAudioPlayer?
+    let urlSuccess = Bundle.main.url(forResource: "successBip", withExtension: "mp3")!
+    
+    @State var audioPlayerFailure: AVAudioPlayer?
+    let urlFailure = Bundle.main.url(forResource: "failureBip", withExtension: "mp3")!
   
     
     var body: some View {
@@ -100,6 +107,18 @@ struct FirstInteraction: View {
             
             if controller.presentErrorView {
                 InteractionErrorView()
+                    .onAppear{
+                        audioPlayerFailure?.volume = 0.3
+                        audioPlayerFailure?.play()
+                    }
+            }
+            
+            if controller.activateSuccessSound{
+                Text("") //CLEAN CODE THIS, i couldn't make the audio be played on the controller so i used this ugly solution due to time constraints
+                    .onAppear{
+                        audioPlayerSuccess?.play()
+                        controller.activateSuccessSound = false
+                    }
             }
             
             if presentClue{
@@ -110,6 +129,9 @@ struct FirstInteraction: View {
                 ContinueInteractionScreen(title: "Wow! Thanks a lot!", textBody: "Glucose levels:\n    Hypoglycemia - Below 70\n    Ideal - 70 to 100\n    Prediabetes - 100 to 125\n    Diabetes - 126 or higher\n\nLooks like the glucose levels are high, let's learn how the insulin application is made?", nextScreen: "SecondInteraction")
             }
             
+        }.task{
+            audioPlayerSuccess = try? AVAudioPlayer(contentsOf: urlSuccess)
+            audioPlayerFailure = try? AVAudioPlayer(contentsOf: urlFailure)
         }
     }
     }
