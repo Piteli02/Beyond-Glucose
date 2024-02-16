@@ -1,12 +1,16 @@
 import SwiftUI
 import UIKit
+import AVFoundation
 
 struct initialScreen: View {
     @EnvironmentObject var router: router
     @EnvironmentObject var customFont: customFonts
+    @State private var audioPlayer: AVAudioPlayer?
+    let url = Bundle.main.url(forResource: "backgroundMusic", withExtension: "mp3")!
     
     
     var body: some View {
+      
         NavigationStack(path: $router.path){
             
             ZStack{
@@ -118,6 +122,11 @@ struct initialScreen: View {
                     Text("ERRO") //CORRIGIR CASO DE ALGUM ERRO QUE NÃO VÁ PARA TELA CORRETA
                 }
             }
+        }.onAppear{
+            audioPlayer = try? AVAudioPlayer(contentsOf: url)
+            audioPlayer?.numberOfLoops = -1
+            audioPlayer?.volume = 0.1
+            audioPlayer?.play()
         }
     }
     

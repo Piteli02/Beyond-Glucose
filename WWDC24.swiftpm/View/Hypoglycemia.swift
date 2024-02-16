@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct Hypoglycemia: View {
     @State var candyImage = "candy"
+    @State private var audioPlayer: AVAudioPlayer?
+    let url = Bundle.main.url(forResource: "biteSound", withExtension: "mp3")!
+
     
     var body: some View {
         GeometryReader{ geometry in
@@ -55,7 +59,13 @@ struct Hypoglycemia: View {
                                 .offset(y: 115)
                                 .offset(x: 90)
                                 .onTapGesture {
+                                    if candyImage == "candy"{
+                                        audioPlayer?.volume = 0.5
+                                        audioPlayer?.play()
+                                    }
                                     candyImage = "biteCandy"
+                                    
+                                 
                                 }
                                 
                         }
@@ -72,6 +82,8 @@ struct Hypoglycemia: View {
                     
                 }
             }
+        }.onAppear{
+            audioPlayer = try? AVAudioPlayer(contentsOf: url)
         }
     }
 }
