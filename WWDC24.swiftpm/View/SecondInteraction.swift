@@ -27,6 +27,7 @@ struct SecondInteraction: View {
                     HStack{
                             Text("    Let's apply insulin?")
                                 .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                                .offset(y: 5)
                         
                         Spacer()
                         
@@ -86,6 +87,7 @@ struct SecondInteraction: View {
                     Text("Step: \(controller.interactionStage.rawValue)/5")
                         .font(Font.custom("JustMeAgainDownHere", size: 56, relativeTo: .largeTitle))
                         .padding(.bottom, 40)
+                        .offset(y: -10)
                     
                 }.allowsHitTesting(!controller.presentErrorView)
                     .allowsHitTesting(!presentClue)

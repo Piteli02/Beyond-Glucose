@@ -44,7 +44,7 @@ struct FirstStorytellingView: View {
                     Text("Bebedouro - São Paulo - 6th Grade")
                         .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
                         .foregroundColor(.black)
-                        .offset(y: 10)
+                        .offset(y: 15)
                     
                     Spacer()
                     
