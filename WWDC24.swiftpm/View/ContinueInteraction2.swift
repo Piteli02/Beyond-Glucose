@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContinueInteractionScreen: View {
+struct ContinueInteractionScreen2: View {
     @EnvironmentObject var controller: FirstInteractionController
     @State var title: String
     @State var textBody: String
@@ -39,9 +39,8 @@ struct ContinueInteractionScreen: View {
                     
                     Image(illustration)
                         .resizable()
-                        .frame(width: geometry.size.width / 5.9, height: geometry.size.height / 2.6)
+                        .frame(width: geometry.size.width / 6.2, height: geometry.size.height / 4.6)
                         .offset(y: 30)
-                        //.padding(.top, 60)
                     
                 }
                 

@@ -38,8 +38,6 @@ class FirstInteractionController: ObservableObject{
                 
             } else if interactionStage == .stage2{
                 validatePress(image1: 5, image2: 4, imageToChange: "bloodHand")
-                let feedback = UIImpactFeedbackGenerator(style: .soft)
-                feedback.impactOccurred()
                 
             }else if interactionStage == .stage3{
                 if images[5].isPressed == true && images[2].isPressed == true{
@@ -49,10 +47,14 @@ class FirstInteractionController: ObservableObject{
                     
                     resetPressed()
                     interactionStage = InteractionStage(rawValue: interactionStage.rawValue + 1) ?? .stage5
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.success)
                 }else {
                     // MANDAR MENSAGEM PADRÃO DO ERRO DE ACORDO COM O ESTÁGIO E LIMPAR SELEÇÃO
                     print("Mandar mensagem de erro")
                     presentErrorView = true
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.error)
                     resetPressed()
                 }
                 
@@ -96,9 +98,13 @@ class FirstInteractionController: ObservableObject{
             
             resetPressed()
             interactionStage = InteractionStage(rawValue: interactionStage.rawValue + 1) ?? .stage5
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
             
         }else {
             presentErrorView = true
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
             resetPressed()
         }
     }

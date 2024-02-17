@@ -49,8 +49,12 @@ class SecondInteractionController: ObservableObject{
                     
                     resetPressed()
                     interactionStage = InteractionStage2(rawValue: interactionStage.rawValue + 1) ?? .stage4
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.success)
                     
                 }else {
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.error)
                     presentErrorView = true
                     resetPressed()
                 }
@@ -63,16 +67,18 @@ class SecondInteractionController: ObservableObject{
             }
             else if interactionStage == .stage4{
                 if images[3].isPressed == true && images[2].isPressed == true{
-                    let feedback = UIImpactFeedbackGenerator(style: .soft)
-                    feedback.impactOccurred()
                     
                     images[3].nameAfterClick = "seringe"
                     images[3].nameBeforeClick = "seringe"
                     
                     resetPressed()
                     interactionStage = InteractionStage2(rawValue: interactionStage.rawValue + 1) ?? .stage4
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.success)
                     
                 }else {
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.error)
                     presentErrorView = true
                     resetPressed()
                 }
@@ -115,9 +121,13 @@ class SecondInteractionController: ObservableObject{
                 
                 resetPressed()
                 interactionStage = InteractionStage2(rawValue: interactionStage.rawValue + 1) ?? .stage5
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
                 
             }else {
                 presentErrorView = true
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.error)
                 resetPressed()
             }
         }

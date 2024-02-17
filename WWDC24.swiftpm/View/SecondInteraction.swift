@@ -25,8 +25,8 @@ struct SecondInteraction: View {
                 VStack{
                     
                     HStack{
-                        Text("    Let's apply insulin?")
-                            .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                            Text("    Let's apply insulin?")
+                                .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
                         
                         Spacer()
                         
@@ -38,6 +38,15 @@ struct SecondInteraction: View {
                         }.padding(.trailing, 35)
                         
                     }
+                    
+                    HStack{
+                        Text("      Tap the object, then tap on the related one for the interaction to happen")
+                            .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
+                            .foregroundColor(.black)
+                            .offset(y: -5)
+                            
+                        Spacer()
+                    } .padding(.leading, 35)
 
                     HStack{
                         VStack{
@@ -90,7 +99,7 @@ struct SecondInteraction: View {
                     Tips(presentClues: $presentClue, title: "Steps for applying insulin:", steps: "    1. Put hand sanitizer on the cotton\n    2. Pass the cotton on the arm\n    3. Pass the cotton on the insulin bottle\n    4. Fill the seringe with insulin\n    5. Apply the seringe on the arm")
                 }
                 if controller.interactionStage == .stage5 {
-                    ContinueInteractionScreen(title: "Thank you for the help!", textBody: "You had just helped on controlling the glucose levels of the blood\n\nNow let's undestant what is Hypoglycemia crisis and the importance of education on combating prejudice?", nextScreen: "Hypoglycemia")
+                    ContinueInteractionScreen2(title: "Thank you for the help!", textBody: "You had just helped on controlling the glucose levels of the blood\n\nNow let's undestant what is Hypoglycemia crisis and the importance of education on combating prejudice?", nextScreen: "Hypoglycemia", illustration: "heart")
                     
                 }
             }

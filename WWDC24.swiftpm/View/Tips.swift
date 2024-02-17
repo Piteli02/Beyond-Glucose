@@ -32,12 +32,6 @@ struct Tips: View {
                     .padding(.horizontal, 40)
                     .padding(.bottom, 20)
                 
-                Text("    To make the interaction you should tap on the object and than tap on the other related to that step of the interaction.")
-                    .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
-                    .foregroundStyle(.black)
-                    .padding(.horizontal, 40)
-                    .padding(.bottom, 20)
-                
                 HStack {
                     Spacer()
                     Button(action: {

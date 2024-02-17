@@ -43,6 +43,15 @@ struct FirstInteraction: View {
                     
                 }
                 
+                HStack{
+                    Text("      Tap the object, then tap on the related one for the interaction to happen")
+                        .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
+                        .foregroundColor(.black)
+                        .offset(y: -5)
+                        
+                    Spacer()
+                } .padding(.leading, 35)
+                
                 Spacer()
                 
                 HStack {
@@ -107,7 +116,7 @@ struct FirstInteraction: View {
             }
             
             if controller.interactionStage == .stage5 {
-                ContinueInteractionScreen(title: "Wow! Thanks a lot!", textBody: "Glucose levels:\n    Hypoglycemia - Below 70\n    Ideal - 70 to 100\n    Prediabetes - 100 to 125\n    Diabetes - 126 or higher\n\nLooks like the glucose levels are high, let's learn how the insulin application is made?", nextScreen: "SecondInteraction")
+                ContinueInteractionScreen(title: "Wow! Thanks a lot!", textBody: "Glucose levels:\n    Hypoglycemia - Below 70\n    Ideal - 70 to 100\n    Prediabetes - 100 to 125\n    Diabetes - 126 or higher\n\nLooks like the glucose levels are high, let's learn how the insulin application is made?", nextScreen: "SecondInteraction", illustration: "monitorWithNumber")
             }
             
         }
