@@ -25,7 +25,7 @@ enum InteractionStage2: Int{
         case .stage2:
           return "What about higienizing the insulin bottle"
         case .stage3:
-          return "The seringe is empty!"
+          return "The syringe is empty!"
         case .stage4:
             return "In order to control glucose levels, apply insulin on the arm!"
         case .stage5:

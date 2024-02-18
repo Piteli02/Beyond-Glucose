@@ -24,12 +24,14 @@ struct News: View {
                 }
                 
                 HStack{
-                    Text("     Unfortunately, all around the world there are absurd cases of prejudice against diabetics, so it's necessary to  educate, in order to generate more inclusion and respect...")
+                    Text("     Unfortunately, all around the world there are absurd cases of prejudice against diabetics and its indispensable treatment, so it's necessary to  educate, in order to generate more inclusion and respect...")
                         .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
                         .foregroundColor(.black)
                         .baselineOffset(12)
                     Spacer()
                 } .padding(.leading, 35)
+                    .padding(.trailing, 20)
+
                 
                 HStack{
                     Spacer()

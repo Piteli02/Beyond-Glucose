@@ -61,7 +61,7 @@ struct FirstStorytellingView: View {
                 }
                 
                 HStack{
-                    Text("     Understand about diabetes, symptoms, care and importance of support. Essential notes for understanding and supporting classmates with diabetes. A moment of learning and empathy in the classroom.")
+                    Text("     Today we are going to dive into understanding Diabetes and how education is key on confronting the prejudice that individuals with Diabetes face.")
                         .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
                         .foregroundColor(.black)
                         .offset(y: -12)
@@ -71,13 +71,15 @@ struct FirstStorytellingView: View {
                     Spacer()
                     
                 }.padding(.leading, 35)
+                    .padding(.trailing, 20)
+
                 
                 ZStack{
                     Image("dataIllustration")
                         .resizable()
                         .frame(width: geometry.size.width - 200, height: geometry.size.height/3)
                     
-                    Text("In 2021 there were 537 million people living with Diabetes. Almost the population of USA and Brazil combined.")
+                    Text("In 2021 there were 537 million people living with Diabetes. Almost the population of the USA and Brazil combined.")
                         .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
                         .baselineOffset(12)
                         .frame(width: geometry.size.width/3)

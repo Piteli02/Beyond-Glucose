@@ -98,10 +98,10 @@ struct SecondInteraction: View {
                     InteractionErrorView2()
                 }
                 if presentClue{
-                    Tips(presentClues: $presentClue, title: "Steps for applying insulin:", steps: "    1. Put hand sanitizer on the cotton\n    2. Pass the cotton on the arm\n    3. Pass the cotton on the insulin bottle\n    4. Fill the seringe with insulin\n    5. Apply the seringe on the arm")
+                    Tips(presentClues: $presentClue, title: "Steps for applying insulin:", steps: "    1. Put hand sanitizer on the cotton\n    2. Pass the cotton on the arm\n    3. Pass the cotton on the insulin bottle\n    4. Fill the syringe with insulin\n    5. Apply the syringe on the arm")
                 }
                 if controller.interactionStage == .stage5 {
-                    ContinueInteractionScreen2(title: "Thank you for the help!", textBody: "You had just helped on controlling the glucose levels of the blood\n\nNow let's undestant what is Hypoglycemia crisis and the importance of education on combating prejudice?", nextScreen: "Hypoglycemia", illustration: "heart")
+                    ContinueInteractionScreen2(title: "Thank you for the help!", textBody: "You had just helped on controlling the glucose levels of the blood\n\nNow let's understand what is Hypoglycemia crisis and the importance of education on combating prejudice?", nextScreen: "Hypoglycemia", illustration: "heart")
                     
                 }
             }

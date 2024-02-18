@@ -82,7 +82,7 @@ struct Hypoglycemia: View {
                     
                 }
             }
-        }.onAppear{
+        }.task{
             audioPlayer = try? AVAudioPlayer(contentsOf: url)
         }
     }

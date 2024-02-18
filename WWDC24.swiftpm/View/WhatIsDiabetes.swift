@@ -24,12 +24,13 @@ struct WhatIsDiabetes: View {
                     }
                     
                     HStack{
-                        Text("     Is a noncommunicable disease that happens when the pancreas does not produce enough insulin (type 1) or, if the body cannot use insulin the way it should (type 2).")
+                        Text("     It is a noncommunicable disease that happens when the pancreas does not produce enough insulin (type 1) or, if the body cannot use insulin the way it should (type 2).")
                             .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
                             .foregroundColor(.black)
                             .baselineOffset(12)
                         Spacer()
                     } .padding(.leading, 35)
+                        .padding(.trailing, 20)
                     
                     Spacer()
                     
