@@ -30,6 +30,7 @@ class SecondInteractionController: ObservableObject{
     @Published var pressedImages = 0
     @Published var presentErrorView = false
     @Published var continueToNextScreen = false
+    @Published var activateSuccessSound = false
     
     func checkPress(image: ImageInfo) -> Void{
         
@@ -47,6 +48,8 @@ class SecondInteractionController: ObservableObject{
                     images[2].nameAfterClick = "cleanArm"
                     images[2].nameBeforeClick = "cleanArm"
                     
+                    activateSuccessSound = true
+
                     resetPressed()
                     interactionStage = InteractionStage2(rawValue: interactionStage.rawValue + 1) ?? .stage4
                     
@@ -69,6 +72,7 @@ class SecondInteractionController: ObservableObject{
                     images[3].nameAfterClick = "seringe"
                     images[3].nameBeforeClick = "seringe"
                     
+                    activateSuccessSound = true
                     resetPressed()
                     interactionStage = InteractionStage2(rawValue: interactionStage.rawValue + 1) ?? .stage4
                     
@@ -113,6 +117,7 @@ class SecondInteractionController: ObservableObject{
                 images[image1].nameAfterClick = imageToChange
                 images[image1].nameBeforeClick = imageToChange
                 
+                activateSuccessSound = true
                 resetPressed()
                 interactionStage = InteractionStage2(rawValue: interactionStage.rawValue + 1) ?? .stage5
                 

@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct SecondInteraction: View {
     @EnvironmentObject var controller: SecondInteractionController
     @State var presentClue = false
+    
+    @State var audioPlayerSuccess: AVAudioPlayer?
+    let urlSuccess = Bundle.main.url(forResource: "successBip", withExtension: "mp3")!
+    
+    @State var audioPlayerFailure: AVAudioPlayer?
+    let urlFailure = Bundle.main.url(forResource: "failureBip", withExtension: "mp3")!
     
     var body: some View {
         
@@ -82,9 +89,20 @@ struct SecondInteraction: View {
                     .allowsHitTesting(!presentClue)
                     .allowsHitTesting(!controller.continueToNextScreen)
                 
+                if controller.activateSuccessSound{
+                    Text("") //CLEAN CODE THIS, i couldn't make the audio be played on the controller so i used this ugly solution due to time constraints
+                        .onAppear{
+                            audioPlayerSuccess?.play()
+                            controller.activateSuccessSound = false
+                        }
+                }
                 
                 if controller.presentErrorView {
                     InteractionErrorView2()
+                        .onAppear{
+                            audioPlayerFailure?.volume = 0.3
+                            audioPlayerFailure?.play()
+                        }
                 }
                 if presentClue{
                     Tips(presentClues: $presentClue, title: "Steps for applying insulin:", steps: "    1. Put hand sanitizer on the cotton\n    2. Pass the cotton on the arm\n    3. Pass the cotton on the insulin bottle\n    4. Fill the seringe with insulin\n    5. Apply the seringe on the arm")
@@ -94,6 +112,9 @@ struct SecondInteraction: View {
                     
                 }
             }
+        }.task{
+            audioPlayerSuccess = try? AVAudioPlayer(contentsOf: urlSuccess)
+            audioPlayerFailure = try? AVAudioPlayer(contentsOf: urlFailure)
         }
     }
     

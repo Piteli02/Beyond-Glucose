@@ -48,6 +48,7 @@ class FirstInteractionController: ObservableObject{
                     images[2].nameAfterClick = "monitorWithNumber"
                     images[2].nameBeforeClick = "monitorWithNumber"
                     
+                    activateSuccessSound = true
                     resetPressed()
                     interactionStage = InteractionStage(rawValue: interactionStage.rawValue + 1) ?? .stage5
                 }else {
@@ -95,8 +96,8 @@ class FirstInteractionController: ObservableObject{
             images[image1].nameAfterClick = imageToChange
             images[image1].nameBeforeClick = imageToChange
             
-            resetPressed()
             activateSuccessSound = true
+            resetPressed()
             interactionStage = InteractionStage(rawValue: interactionStage.rawValue + 1) ?? .stage5
             
         }else {
