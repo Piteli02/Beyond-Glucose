@@ -1,5 +1,5 @@
-# WWDC24 - Beyond glucose
-"Beyond glucose" is an interactive experience that aims to create awareness about diabetes and the prejudices that people with this disease face. Furthermore, the project was carried out for submitting at Worldwide Developers Conference 2024. 
+# Swift Student Challenge 2024 - Beyond glucose
+"Beyond glucose" is an interactive experience made for Ipad that aims to create awareness about diabetes and the prejudices that people with this disease face. Furthermore, the project was carried out for submitting to Swift Student Challenge. 
 
 ## Fonts of research
 ### World Health Organization
@@ -24,3 +24,5 @@
 - Noncommunicable illustration - <a href="https://www.flaticon.com/free-icons/bacteria" title="bacteria icons">Bacteria icons created by Linector - Flaticon</a>
 - Notebook cover pattern - <a href="https://br.freepik.com/vetores-gratis/as-linhas-de-contorno-topograficas-mapeiam-o-padrao-sem-emenda_13381541.htm#query=pattern&position=1&from_view=search&track=sph&uuid=fd73a778-3d51-4b5d-9a6e-4c953d80cb21">Imagem de macrovector</a> no Freepik
 - Background music (By William King) - https://pixabay.com/music/bossa-nova-morning-sunshine-bossa-nova-170204/
+  
+Thanks for making this content available and helping me building this project!  
