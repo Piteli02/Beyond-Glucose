@@ -123,15 +123,6 @@ struct initialScreen: View {
                 }
             }
             
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-                // Stop playing background music when app goes to background
-                audioPlayer?.stop()
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                // Resume playing background music when app comes back to foreground
-                audioPlayer?.play()
-            }
-            
         }.onAppear{
             audioPlayer = try? AVAudioPlayer(contentsOf: url)
             audioPlayer?.numberOfLoops = -1

@@ -141,6 +141,7 @@ struct FirstInteraction: View {
         }.task{
             audioPlayerSuccess = try? AVAudioPlayer(contentsOf: urlSuccess)
             audioPlayerFailure = try? AVAudioPlayer(contentsOf: urlFailure)
+            audioPlayerSuccess?.volume = 0.3
         }
     }
     }
