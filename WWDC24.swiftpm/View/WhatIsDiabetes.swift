@@ -18,6 +18,7 @@ struct WhatIsDiabetes: View {
                     HStack{
                         Text("    What is Diabetes?")
                             .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                            .foregroundStyle(Color.black)
                         
                         Spacer()
                         

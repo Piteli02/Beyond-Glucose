@@ -21,6 +21,8 @@ struct DiabetesEssential: View {
                     
                     Text("   What is essential for a person with diabetes?")
                         .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                        .foregroundStyle(Color.black)
+
                     Spacer()
                     
                 }

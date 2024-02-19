@@ -24,6 +24,8 @@ struct Hypoglycemia: View {
                     HStack{
                         Text("    Hypoglycemia")
                             .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                            .foregroundStyle(Color.black)
+
                         
                         Spacer()
                         

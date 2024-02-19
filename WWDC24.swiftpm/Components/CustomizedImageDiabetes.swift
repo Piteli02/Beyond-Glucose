@@ -21,6 +21,7 @@ struct CustomizedImageDiabetes: View {
         VStack(alignment: .center) {
             Text(tapped ? title : title)
                 .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                .foregroundStyle(Color.black)
                 .offset(y: 35)
             
             Image(tapped ? imageAfterTap : imageBeforetap)
@@ -31,6 +32,7 @@ struct CustomizedImageDiabetes: View {
             
             Text(tapped ? descriptionafter : "Tap to learn more")
                 .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
+                .foregroundStyle(Color.black)
                 .frame(width: geometry.size.width-200/3)
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
