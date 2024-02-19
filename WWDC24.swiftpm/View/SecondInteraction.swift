@@ -34,6 +34,7 @@ struct SecondInteraction: View {
                     HStack{
                             Text("    Let's apply insulin?")
                                 .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                                .foregroundStyle(Color.black)
                                 .offset(y: 5)
                         
                         Spacer()
@@ -93,6 +94,7 @@ struct SecondInteraction: View {
                     
                     Text("Step: \(controller.interactionStage.rawValue)/5")
                         .font(Font.custom("JustMeAgainDownHere", size: 56, relativeTo: .largeTitle))
+                        .foregroundStyle(Color.black)
                         .padding(.bottom, 40)
                         .offset(y: -10)
                     
@@ -126,6 +128,7 @@ struct SecondInteraction: View {
         }.task{
             audioPlayerSuccess = try? AVAudioPlayer(contentsOf: urlSuccess)
             audioPlayerFailure = try? AVAudioPlayer(contentsOf: urlFailure)
+            audioPlayerSuccess?.volume = 0.1
         }
     }
     

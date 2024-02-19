@@ -38,6 +38,8 @@ struct FirstInteraction: View {
                 HStack{
                     Text("    Let's help on measuring glucose levels?")
                         .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                        .foregroundStyle(Color.black)
+
                     
                     Spacer()
                     
@@ -104,6 +106,8 @@ struct FirstInteraction: View {
                     Spacer()
                     Text("Step: \(controller.interactionStage.rawValue)/5")
                         .font(Font.custom("JustMeAgainDownHere", size: 56, relativeTo: .largeTitle))
+                        .foregroundStyle(Color.black)
+
                     Spacer()
                 }.offset(y: -50)
 
@@ -141,7 +145,7 @@ struct FirstInteraction: View {
         }.task{
             audioPlayerSuccess = try? AVAudioPlayer(contentsOf: urlSuccess)
             audioPlayerFailure = try? AVAudioPlayer(contentsOf: urlFailure)
-            audioPlayerSuccess?.volume = 0.3
+            audioPlayerSuccess?.volume = 0.1
         }
     }
     }

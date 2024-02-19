@@ -18,6 +18,8 @@ struct News: View {
                 HStack{
                     Text("    Empathy and Diabetes")
                         .font(Font.custom("JustMeAgainDownHere", size: 48, relativeTo: .title))
+                        .foregroundStyle(Color.black)
+
                     
                     Spacer()
                     

@@ -84,6 +84,7 @@ struct FirstStorytellingView: View {
                         .baselineOffset(12)
                         .frame(width: geometry.size.width/3)
                         .padding(.leading, geometry.size.width/2.4)
+                        .foregroundStyle(Color.black)
 
                 }
                 Spacer()
