@@ -11,6 +11,8 @@ import AVFoundation
 struct SecondInteraction: View {
     @EnvironmentObject var controller: SecondInteractionController
     @State var presentClue = false
+    @EnvironmentObject var audioManager: AudioManager
+
     
     @State var audioPlayerSuccess: AVAudioPlayer?
     let urlSuccess = Bundle.main.url(forResource: "successBip", withExtension: "mp3")!
@@ -105,7 +107,9 @@ struct SecondInteraction: View {
                 if controller.activateSuccessSound{
                     Text("") //CLEAN CODE THIS, i couldn't make the audio be played on the controller so i used this ugly solution due to time constraints
                         .onAppear{
-                            audioPlayerSuccess?.play()
+                            if audioManager.audioOn{
+                                audioPlayerSuccess?.play()
+                            }
                             controller.activateSuccessSound = false
                         }
                 }
@@ -113,8 +117,9 @@ struct SecondInteraction: View {
                 if controller.presentErrorView {
                     InteractionErrorView2()
                         .onAppear{
-                            audioPlayerFailure?.volume = 0.3
-                            audioPlayerFailure?.play()
+                            if audioManager.audioOn{
+                                audioPlayerFailure?.play()
+                            }
                         }
                 }
                 if presentClue{
@@ -129,6 +134,8 @@ struct SecondInteraction: View {
             audioPlayerSuccess = try? AVAudioPlayer(contentsOf: urlSuccess)
             audioPlayerFailure = try? AVAudioPlayer(contentsOf: urlFailure)
             audioPlayerSuccess?.volume = 0.1
+            audioPlayerFailure?.volume = 0.3
+
         }
     }
     

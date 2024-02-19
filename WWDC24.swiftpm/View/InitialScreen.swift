@@ -5,12 +5,13 @@ import AVFoundation
 struct initialScreen: View {
     @EnvironmentObject var router: router
     @EnvironmentObject var customFont: customFonts
+    @EnvironmentObject var audioManager: AudioManager
     @State private var audioPlayer: AVAudioPlayer?
     let url = Bundle.main.url(forResource: "backgroundMusic", withExtension: "mp3")!
     
     
     var body: some View {
-      
+        
         NavigationStack(path: $router.path){
             
             ZStack{
@@ -25,7 +26,7 @@ struct initialScreen: View {
                     .blendMode(.multiply)
                     .ignoresSafeArea()
                 
-
+                
                 GeometryReader{ geometry in
                     
                     let width = geometry.size.width
@@ -49,6 +50,25 @@ struct initialScreen: View {
                         
                         //MARK: - Buttons and title
                         VStack{
+                            HStack{
+                                Spacer()
+                                Button(action: {
+                                    audioManager.audioOn.toggle()
+                                    if audioManager.audioOn == false{
+                                        audioPlayer?.pause()
+                                    }else{
+                                        audioPlayer?.play()
+                                    }
+                                    
+                                }) {
+                                    if audioManager.audioOn{
+                                        Image("soundOffButton")
+                                    }else{
+                                        Image("soundOnButton")
+                                    }
+                                }.padding(.trailing, 35)
+                            }
+                            
                             ZStack{
                                 Image("coverTitleRectangle")
                                     .resizable()
@@ -66,7 +86,7 @@ struct initialScreen: View {
                                     Image("coverButton")
                                         .resizable()
                                         .frame(width: width/3.2, height: height/13)
-                                        
+                                    
                                     Text("Start")
                                         .font(Font.custom("JustMeAgainDownHere", size: 60))
                                         .foregroundColor(.black)
@@ -80,7 +100,7 @@ struct initialScreen: View {
                                     Image("coverButton")
                                         .resizable()
                                         .frame(width: width/3.2, height: height/13)
-                                        
+                                    
                                     Text("Credits")
                                         .font(Font.custom("JustMeAgainDownHere", size: 60))
                                         .foregroundColor(.black)
@@ -99,7 +119,7 @@ struct initialScreen: View {
                 case "Start":
                     FirstStorytellingView()
                 case "Credits":
-                        Credits()
+                    Credits()
                 case "WhatIsDiabetes":
                     WhatIsDiabetes()
                 case "News":
@@ -123,7 +143,7 @@ struct initialScreen: View {
                 }
             }
             
-        }.onAppear{
+        }.task{
             audioPlayer = try? AVAudioPlayer(contentsOf: url)
             audioPlayer?.numberOfLoops = -1
             audioPlayer?.volume = 0.1

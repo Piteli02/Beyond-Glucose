@@ -12,6 +12,8 @@ struct Hypoglycemia: View {
     @State var candyImage = "candy"
     @State private var audioPlayer: AVAudioPlayer?
     let url = Bundle.main.url(forResource: "biteSound", withExtension: "mp3")!
+    @EnvironmentObject var audioManager: AudioManager
+
 
     
     var body: some View {
@@ -63,7 +65,9 @@ struct Hypoglycemia: View {
                                 .onTapGesture {
                                     if candyImage == "candy"{
                                         audioPlayer?.volume = 0.5
-                                        audioPlayer?.play()
+                                        if audioManager.audioOn{
+                                            audioPlayer?.play()
+                                        }
                                     }
                                     candyImage = "biteCandy"
                                     

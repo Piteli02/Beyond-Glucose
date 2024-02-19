@@ -7,6 +7,7 @@ struct MyApp: App {
             initialScreen()
                 .environmentObject(router())
                 .environmentObject(customFonts())
+                .environmentObject(AudioManager())
         }
     }
 }

@@ -10,6 +10,9 @@ import AVFoundation
 
 struct FirstInteraction: View {
     @EnvironmentObject var controller: FirstInteractionController
+    @EnvironmentObject var audioManager: AudioManager
+
+    
     @State var presentClue = false
     
     @State var audioPlayerSuccess: AVAudioPlayer?
@@ -121,15 +124,18 @@ struct FirstInteraction: View {
             if controller.presentErrorView {
                 InteractionErrorView()
                     .onAppear{
-                        audioPlayerFailure?.volume = 0.3
-                        audioPlayerFailure?.play()
+                        if audioManager.audioOn{
+                            audioPlayerFailure?.play()
+                        }
                     }
             }
             
             if controller.activateSuccessSound{
                 Text("") //CLEAN CODE THIS, i couldn't make the audio be played on the controller so i used this ugly solution due to time constraints
                     .onAppear{
-                        audioPlayerSuccess?.play()
+                        if audioManager.audioOn{
+                            audioPlayerSuccess?.play()
+                        }
                         controller.activateSuccessSound = false
                     }
             }
@@ -146,6 +152,8 @@ struct FirstInteraction: View {
             audioPlayerSuccess = try? AVAudioPlayer(contentsOf: urlSuccess)
             audioPlayerFailure = try? AVAudioPlayer(contentsOf: urlFailure)
             audioPlayerSuccess?.volume = 0.1
+            audioPlayerFailure?.volume = 0.3
+
         }
     }
     }
