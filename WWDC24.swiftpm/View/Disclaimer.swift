@@ -22,13 +22,16 @@ struct Disclaimer: View {
                     Text("     Do not replace professional medical advice")
                         .font(Font.custom("Delius-Regular", size: 34, relativeTo: .title))
                         .foregroundColor(.black)
+                        .offset(y: -12)
                         .padding()
                     
-                    Text("     It's important to note that this app is entirely educational. The aim of the app is to raise awareness about diabetes and promote inclusion and respect for people living with the condition. ")
+                    Text("     It's important to note that this app is entirely educational. The aim of the app is to raise awareness about diabetes and promote respect for people living with it.")
                         .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
                         .foregroundColor(.black)
                         .baselineOffset(12)
-                        .padding(.horizontal, 35)
+                        .padding(.leading, 35)
+                        .padding(.trailing, 20)
+                        .offset(y: 18)
                     
                     Spacer()
                     

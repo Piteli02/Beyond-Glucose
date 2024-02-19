@@ -24,15 +24,16 @@ struct CustomizedImageDiabetes: View {
                 .offset(y: 35)
             
             Image(tapped ? imageAfterTap : imageBeforetap)
+                .frame(width: geometry.size.width/7.8, height: geometry.size.height / 5.6)
                 .onTapGesture {
                     tapped = true
                 }
             
-            Text(tapped ? descriptionafter : "")
+            Text(tapped ? descriptionafter : "Tap to learn more")
                 .font(Font.custom("Delius-Regular", size: 25, relativeTo: .body))
                 .frame(width: geometry.size.width-200/3)
                 .multilineTextAlignment(.center)
-                .offset(y: -5)
+                .padding(.top, 20)
         }
     }
     }

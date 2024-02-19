@@ -29,7 +29,7 @@ struct DiabetesEssential: View {
                 
                     HStack{
                         Spacer()
-                        Image("seringeLabel")
+                        Image("syringeLabel")
                             .resizable()
                             .frame(width: geometry.size.width/4.1, height: geometry.size.height/3.4)
                             .padding()
