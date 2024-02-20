@@ -62,9 +62,10 @@ struct initialScreen: View {
                                     
                                 }) {
                                     if audioManager.audioOn{
-                                        Image("soundOffButton")
-                                    }else{
                                         Image("soundOnButton")
+                                    }else{
+                                        Image("soundOffButton")
+
                                     }
                                 }.padding(.trailing, 35)
                             }
