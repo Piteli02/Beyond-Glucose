@@ -148,7 +148,7 @@ struct FirstInteraction: View {
                             audioPlayerSuccess?.play()
                         }
                         controller.activateSuccessSound = false
-                    }
+                    } 
             }
             
             if presentClue{

@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
-import AVFoundation
+import AVFoundation 
 
 struct SecondInteraction: View {
     @EnvironmentObject var controller: SecondInteractionController
     @State var presentClue = false
+    @State var presentInstructions = true
+
     @EnvironmentObject var audioManager: AudioManager
 
     
@@ -114,7 +116,7 @@ struct SecondInteraction: View {
                         }
                 }
                 
-                if controller.presentErrorView {
+                if controller.presentErrorView && controller.errorsInARow < 3 {
                     InteractionErrorView2()
                         .onAppear{
                             if audioManager.audioOn{
@@ -122,8 +124,21 @@ struct SecondInteraction: View {
                             }
                         }
                 }
+                
+                if controller.errorsInARow == 3{
+                    skipSuggestion(title: "Keep trying?", instructions: "These are the steps you should follow:\n    1. Put hand sanitizer on the cotton\n    2. Pass the cotton on the arm\n    3. Pass the cotton on the insulin bottle\n    4. Fill the syringe with insulin\n    5. Apply the syringe on the arm\n\nYou want to keep tring or go to the next screen?", errorsInARow: $controller.errorsInARow, nextScreen: "Hypoglycemia")
+                        .onAppear{
+                            audioPlayerFailure?.play()
+                            controller.presentErrorView =  false
+                            
+                    }
+                }
+                
                 if presentClue{
                     Tips(presentClues: $presentClue, title: "Steps for applying insulin:", steps: "    1. Put hand sanitizer on the cotton\n    2. Pass the cotton on the arm\n    3. Pass the cotton on the insulin bottle\n    4. Fill the syringe with insulin\n    5. Apply the syringe on the arm")
+                }
+                if presentInstructions{
+                    instructions(presentingScreen: $presentInstructions, title: "Apply insulin", instructions: "     To apply insulin, you gotta fill the serynge with insulin and than apply on the cleaned arm. \n\n     However, there are a few more steps you gotta. Let's learn?")
                 }
                 if controller.interactionStage == .stage5 {
                     ContinueInteractionScreen2(title: "Thank you for the help!", textBody: "You had just helped on controlling the glucose levels of the blood\n\nNow let's understand what is Hypoglycemia crisis and the importance of education on combating prejudice?", nextScreen: "Hypoglycemia", illustration: "heart")
