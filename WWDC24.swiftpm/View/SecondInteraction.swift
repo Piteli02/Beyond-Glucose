@@ -126,7 +126,7 @@ struct SecondInteraction: View {
                 }
                 
                 if controller.errorsInARow == 3{
-                    skipSuggestion(title: "Keep trying?", instructions: "Don't worry, these are the steps you should follow:\n    1. Put hand sanitizer on the cotton\n    2. Pass the cotton on the arm\n    3. Pass the cotton on the insulin bottle\n    4. Fill the syringe with insulin\n    5. Apply the syringe on the arm\n\nou want to keep trying or go to the next screen?", errorsInARow: $controller.errorsInARow, nextScreen: "Hypoglycemia")
+                    skipSuggestion(title: "Keep trying?", instructions: "Don't worry, these are the steps you should follow:\n    1. Put hand sanitizer on the cotton\n    2. Pass the cotton on the arm\n    3. Pass the cotton on the insulin bottle\n    4. Fill the syringe with insulin\n    5. Apply the syringe on the arm\n\nDo you want to keep trying or go to the next screen?", errorsInARow: $controller.errorsInARow, nextScreen: "Hypoglycemia")
                         .onAppear{
                             audioPlayerFailure?.play()
                             controller.presentErrorView =  false
