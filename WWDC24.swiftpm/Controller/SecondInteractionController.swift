@@ -31,6 +31,8 @@ class SecondInteractionController: ObservableObject{
     @Published var presentErrorView = false
     @Published var continueToNextScreen = false
     @Published var activateSuccessSound = false
+    @Published var errorsInARow = 0
+
     
     func checkPress(image: ImageInfo) -> Void{
         
@@ -49,6 +51,7 @@ class SecondInteractionController: ObservableObject{
                     images[2].nameBeforeClick = "cleanArm"
                     
                     activateSuccessSound = true
+                    errorsInARow = 0
 
                     resetPressed()
                     interactionStage = InteractionStage2(rawValue: interactionStage.rawValue + 1) ?? .stage4
@@ -59,6 +62,7 @@ class SecondInteractionController: ObservableObject{
                     let generator = UINotificationFeedbackGenerator()
                     generator.notificationOccurred(.error)
                     presentErrorView = true
+                    errorsInARow = errorsInARow + 1
                     resetPressed()
                 }
                 
@@ -75,6 +79,7 @@ class SecondInteractionController: ObservableObject{
                     images[3].nameBeforeClick = "seringe"
                     
                     activateSuccessSound = true
+                    errorsInARow = 0
                     resetPressed()
                     interactionStage = InteractionStage2(rawValue: interactionStage.rawValue + 1) ?? .stage4
                     let generator = UINotificationFeedbackGenerator()
@@ -84,6 +89,8 @@ class SecondInteractionController: ObservableObject{
                     let generator = UINotificationFeedbackGenerator()
                     generator.notificationOccurred(.error)
                     presentErrorView = true
+                    errorsInARow = errorsInARow + 1
+
                     resetPressed()
                 }
             }
@@ -124,6 +131,7 @@ class SecondInteractionController: ObservableObject{
                 images[image1].nameBeforeClick = imageToChange
                 
                 activateSuccessSound = true
+                errorsInARow = 0
                 resetPressed()
                 interactionStage = InteractionStage2(rawValue: interactionStage.rawValue + 1) ?? .stage5
                 let generator = UINotificationFeedbackGenerator()
@@ -131,6 +139,7 @@ class SecondInteractionController: ObservableObject{
                 
             }else {
                 presentErrorView = true
+                errorsInARow = errorsInARow + 1
                 let generator = UINotificationFeedbackGenerator()
                 generator.notificationOccurred(.error)
                 resetPressed()
