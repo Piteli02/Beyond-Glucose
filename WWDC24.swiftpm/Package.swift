@@ -23,7 +23,8 @@ let package = Package(
             appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.blue),
             supportedDeviceFamilies: [
-                .pad
+                .pad,
+                .phone
             ],
             supportedInterfaceOrientations: [
                 .landscapeRight,

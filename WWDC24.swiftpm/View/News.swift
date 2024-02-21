@@ -39,7 +39,7 @@ struct News: View {
                     } .padding(.leading, 35)
                         .padding(.trailing, 20)
                     
-                    
+                    Spacer()
                     HStack{
                         Spacer()
                         
@@ -47,7 +47,8 @@ struct News: View {
                             focusNews1 = true
                         }) {
                             Image("news1")
-                                .frame(width: geometry.size.width / 3.1, height: geometry.size.height / 3)
+                                .resizable()
+                                .frame(width: geometry.size.width / 3, height: geometry.size.height / 4)
                                 .rotationEffect(.degrees(-13))
 
                                 .padding()
@@ -61,6 +62,7 @@ struct News: View {
                             focusNews2 = true
                                     }) {
                                         Image("news2")
+                                            .resizable()
                                             .frame(width: geometry.size.width / 2.8, height: geometry.size.height / 4.2)
                                             .rotationEffect(.degrees(5))
                                             .padding()
@@ -79,8 +81,9 @@ struct News: View {
 
                                     }) {
                                         Image("news3")
-                                            .frame(width: geometry.size.width / 2.7, height: geometry.size.height / 4.5)
-                                            .rotationEffect(.degrees(-5))
+                                            .resizable()
+                                            .frame(width: geometry.size.width / 2.7, height: geometry.size.height / 5)
+                                            //.rotationEffect(.degrees(-5))
                                             .padding()
                                     }
                      
