@@ -24,6 +24,7 @@ class FirstInteractionController: ObservableObject{
     @Published var presentErrorView = false
     @Published var continueToNextScreen = false
     @Published var activateSuccessSound = false
+    @Published var errorsInARow = 0
     
     func checkPress(image: ImageInfo) -> Void{
         
@@ -47,6 +48,7 @@ class FirstInteractionController: ObservableObject{
                     images[2].nameBeforeClick = "monitorWithNumber"
                     
                     activateSuccessSound = true
+                    errorsInARow = 0
                     resetPressed()
                     interactionStage = InteractionStage(rawValue: interactionStage.rawValue + 1) ?? .stage5
                     let generator = UINotificationFeedbackGenerator()
@@ -55,6 +57,7 @@ class FirstInteractionController: ObservableObject{
                     // MANDAR MENSAGEM PADRÃO DO ERRO DE ACORDO COM O ESTÁGIO E LIMPAR SELEÇÃO
                     print("Mandar mensagem de erro")
                     presentErrorView = true
+                    errorsInARow = errorsInARow + 1
                     let generator = UINotificationFeedbackGenerator()
                     generator.notificationOccurred(.error)
                     resetPressed()
@@ -100,6 +103,7 @@ class FirstInteractionController: ObservableObject{
             
             activateSuccessSound = true
             resetPressed()
+            errorsInARow = 0
             interactionStage = InteractionStage(rawValue: interactionStage.rawValue + 1) ?? .stage5
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
@@ -109,6 +113,8 @@ class FirstInteractionController: ObservableObject{
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
             resetPressed()
+            errorsInARow = errorsInARow + 1
+
         }
     }
     

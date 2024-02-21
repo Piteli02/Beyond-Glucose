@@ -14,6 +14,8 @@ struct FirstInteraction: View {
 
     
     @State var presentClue = false
+    @State var presentInstructions = true
+
     
     @State var audioPlayerSuccess: AVAudioPlayer?
     let urlSuccess = Bundle.main.url(forResource: "successBip", withExtension: "mp3")!
@@ -121,13 +123,22 @@ struct FirstInteraction: View {
             .allowsHitTesting(!presentClue)
             .allowsHitTesting(!controller.continueToNextScreen)
             
-            if controller.presentErrorView {
+            if controller.presentErrorView && controller.errorsInARow < 3 {
                 InteractionErrorView()
                     .onAppear{
                         if audioManager.audioOn{
                             audioPlayerFailure?.play()
                         }
                     }
+            }
+            
+            if controller.errorsInARow == 3{
+                skipSuggestion(title: "Keep trying?", instructions: "Don't worry, these are the steps you should follow:\n    1. Clean your hands with Hand sanitizer\n    2. Put the glucose strip on the glucometer\n    3. Poke your finger with the Lancet\n    4. Put the blood drop on the strip\n    5. Clean your finger\n\nYou want to keep trying or go to the next screen?", errorsInARow: $controller.errorsInARow, nextScreen: "SecondInteraction")
+                    .onAppear{
+                        audioPlayerFailure?.play()
+                        controller.presentErrorView =  false
+                        
+                }
             }
             
             if controller.activateSuccessSound{
@@ -137,12 +148,17 @@ struct FirstInteraction: View {
                             audioPlayerSuccess?.play()
                         }
                         controller.activateSuccessSound = false
-                    }
+                    } 
             }
             
             if presentClue{
                 Tips(presentClues: $presentClue, title: "Steps to measure glucose level", steps: "    1. Clean your hands with Hand sanitizer\n    2. Put the glucose strip on the glucometer\n    3. Poke your finger with the Lancet\n    4. Put the blood drop on the strip\n    5. Clean your finger")
             }
+            
+            if presentInstructions{
+                instructions(presentingScreen: $presentInstructions, title: "Measure glucose levels", instructions: "     To check glucose levels, you gotta get a drop of blood from the finger using the lancet and put it on the strip in the glucometer, then it tells you the measurement results. \n\n    But before all that, there are a few steps you gotta do first. Let's try?")
+            }
+            
             
             if controller.interactionStage == .stage5 {
                 ContinueInteractionScreen(title: "Wow! Thanks a lot!", textBody: "Glucose levels:\n    Hypoglycemia - Below 70\n    Ideal - 70 to 100\n    Prediabetes - 100 to 125\n    Diabetes - 126 or higher\n\nLooks like the glucose levels are high, let's learn how the insulin application is made?", nextScreen: "SecondInteraction", illustration: "monitorWithNumber")
