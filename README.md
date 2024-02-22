@@ -1,5 +1,5 @@
 # Swift Student Challenge 2024 - Beyond glucose
-"Beyond glucose" is an interactive experience made for Ipad that aims to create awareness about diabetes and the prejudices that people with this disease face. Furthermore, the project was carried out for submitting to Swift Student Challenge. 
+"Beyond glucose" is an interactive experience made for iPad that aims to create awareness about diabetes and the prejudices that people with this disease face. Furthermore, the project was carried out for submitting to Swift Student Challenge 2024. 
 
 ## Fonts of research
 ### World Health Organization
