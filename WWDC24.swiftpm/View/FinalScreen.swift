@@ -14,7 +14,7 @@ struct FinalScreen: View {
             Image("coverPattern")
                 .resizable()
                 .scaledToFill()
-                .opacity(0.8)
+                .opacity(0.6)
                 .blendMode(.multiply)
                 .ignoresSafeArea()
             
@@ -29,6 +29,7 @@ struct FinalScreen: View {
                     Spacer()
                     //MARK: - Buttons and title
                     VStack{
+                        Spacer()
                         ZStack{
                             Image("coverTitleRectangle")
                                 .resizable()
@@ -68,20 +69,10 @@ struct FinalScreen: View {
                                 
                             }
                         }
+                        Spacer()
                     }
                     
                     Spacer()
-                    //Black Margin
-                    Rectangle()
-                        .frame(width: width/8, height: height)
-                        .foregroundColor(Color("marginColor"))
-                        .overlay(
-                            Image("paperTexture")
-                                .resizable()
-                                .opacity(1)
-                                .blendMode(.multiply)
-                                .ignoresSafeArea()
-                        )
                     
                     
                 }

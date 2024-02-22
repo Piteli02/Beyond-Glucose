@@ -22,7 +22,7 @@ struct initialScreen: View {
                 Image("coverPattern")
                     .resizable()
                     .scaledToFill()
-                    .opacity(0.8)
+                    .opacity(0.6)
                     .blendMode(.multiply)
                     .ignoresSafeArea()
                 
@@ -33,23 +33,12 @@ struct initialScreen: View {
                     let height = geometry.size.height
                     
                     HStack{
-                        
-                        //Black Margin
-                        Rectangle()
-                            .frame(width: width/8, height: height)
-                            .foregroundColor(Color("marginColor"))
-                            .overlay(
-                                Image("paperTexture")
-                                    .resizable()
-                                    .opacity(1)
-                                    .blendMode(.multiply)
-                                    .ignoresSafeArea()
-                            )
-                        
+                                            
                         Spacer()
                         
                         //MARK: - Buttons and title
                         VStack{
+                            Spacer()
                             HStack{
                                 Spacer()
                                 Button(action: {
@@ -108,6 +97,7 @@ struct initialScreen: View {
                                     
                                 }
                             }
+                            Spacer()
                         }
                         
                         Spacer()
