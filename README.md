@@ -25,4 +25,4 @@
 - Notebook cover pattern - <a href="https://br.freepik.com/vetores-gratis/as-linhas-de-contorno-topograficas-mapeiam-o-padrao-sem-emenda_13381541.htm#query=pattern&position=1&from_view=search&track=sph&uuid=fd73a778-3d51-4b5d-9a6e-4c953d80cb21">Imagem de macrovector</a> no Freepik
 - Background music (By William King) - https://pixabay.com/music/bossa-nova-morning-sunshine-bossa-nova-170204/
   
-Thanks for making this content available and helping me building this project!  
+Thanks for making this content available and helping me building this project! All the other assets were made by myself.  
